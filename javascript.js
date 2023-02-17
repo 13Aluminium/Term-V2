@@ -1,45 +1,45 @@
 // import { CustomOs } from './utils/datastructures.js';
 
-// class CustomOs{
+class CustomOs{
 
-//     constructor(name, terminalInstance){
+    constructor(name, terminalInstance){
 
-//         this.terminalInstance = terminalInstance; 
+        this.terminalInstance = terminalInstance; 
 
-//         this.name = name;
+        this.name = name;
 
-//         this.fileStructures = {
-//             root: {}
-//         }
+        this.fileStructures = {
+            root: {}
+        }
 
-//         terminalInstance.echo("Created OS with name: " + name);
+        terminalInstance.echo("Created OS with name: " + name);
 
-//     }
+    }
 
-//     ls(rel_path='root'){
-//         let paths = rel_path.split('/');
-//         alert(paths.length);
-//         let lookUpInstance = paths.reduce((prev, curr) => prev[curr], this.fileStructures);
-//         alert(lookUpInstance)
-//         this.terminalInstance.echo(Object.keys(lookUpInstance).map((val) => {
-//             return `${typeof lookUpInstance[val] === 'object' ? 'Folder' : 'File'}: ${typeof lookUpInstance[val] === 'object' ? `${Object.entries(lookUpInstance[val]).length  === 0 ? "Empty Space, BOI!!" : Object.entries(lookUpInstance[val]).length} Items` : lookUpInstance[val]}\n`
-//         }))
-//     }
+    ls(rel_path='root'){
+        let paths = rel_path.split('/');
+        alert(paths.length);
+        let lookUpInstance = paths.reduce((prev, curr) => prev[curr], this.fileStructures);
+        alert(lookUpInstance)
+        this.terminalInstance.echo(Object.keys(lookUpInstance).map((val) => {
+            return `${typeof lookUpInstance[val] === 'object' ? 'Folder' : 'File'}: ${typeof lookUpInstance[val] === 'object' ? `${Object.entries(lookUpInstance[val]).length  === 0 ? "Empty Space, BOI!!" : Object.entries(lookUpInstance[val]).length} Items` : lookUpInstance[val]}\n`
+        }))
+    }
 
-//     mkdir(rel_path='root', folder_name='Untitled'){
-//         let paths = rel_path.split('/');
+    mkdir(rel_path='root', folder_name='Untitled'){
+        let paths = rel_path.split('/');
 
-//         let currPos = paths.reduce((prev, curr) => prev[curr], this.fileStructures);
-//         currPos[folder_name] = {};
-//     }
+        let currPos = paths.reduce((prev, curr) => prev[curr], this.fileStructures);
+        currPos[folder_name] = {};
+    }
 
-// }
+}
 
 // s = import('./utils/datastructures.js');
 
 var song = 0;
 
-// os_instances = {};
+os_instances = {};
 
 $('body').terminal({
 
@@ -222,44 +222,44 @@ break;
 
     // IO/OS specific operation commands
 
-    // create_os: function(name){
+    create_os: function(name){
 
-    //     if(name === '' || !name){
-    //         this.error("Hi");
-    //     }
-    //     this.echo('Creating OS...');
-    //     this.pause();
-    //     setTimeout(() => {
-    //         os_instances[name] = new CustomOs(name, this);
-    //         // setting this new Os as default pointer on OSes sync with local storage API
-    //         localStorage.setItem('current_os', name);
-    //         localStorage.setItem('current_path', 'root');
-    //         this.resume();
-    //         this.echo('OS Created!');
+        if(name === '' || !name){
+            this.error("Hi");
+        }
+        this.echo('Creating OS...');
+        this.pause();
+        setTimeout(() => {
+            os_instances[name] = new CustomOs(name, this);
+            // setting this new Os as default pointer on OSes sync with local storage API
+            localStorage.setItem('current_os', name);
+            localStorage.setItem('current_path', 'root');
+            this.resume();
+            this.echo('OS Created!');
 
-    //     }, 2000)
-    // },
+        }, 2000)
+    },
 
-    // alter_os: function(os_name){
-    //     localStorage.setItem('current_os', os_name);
-    //     localStorage.setItem('current_path', 'root');
+    alter_os: function(os_name){
+        localStorage.setItem('current_os', os_name);
+        localStorage.setItem('current_path', 'root');
 
-    // },
+    },
 
-    // ls: function(){
-    //     os_name = localStorage.getItem('current_os');
-    //     curr_path = localStorage.getItem('current_path');
+    ls: function(){
+        os_name = localStorage.getItem('current_os');
+        curr_path = localStorage.getItem('current_path');
 
-    //     os_instances[os_name].ls();
+        os_instances[os_name].ls();
 
-    // },
+    },
 
-    // mkdir: function(folder_name){
-    //     os_name = localStorage.getItem('current_os');
-    //     curr_path = localStorage.getItem('current_path');
-    //     os_instances[os_name].mkdir(curr_path, folder_name);
+    mkdir: function(folder_name){
+        os_name = localStorage.getItem('current_os');
+        curr_path = localStorage.getItem('current_path');
+        os_instances[os_name].mkdir(curr_path, folder_name);
 
-    // }
+    }
 
 },
 
